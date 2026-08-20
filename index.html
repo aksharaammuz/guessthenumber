@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A cute secret number guessing game for two people.">
+    <title>Secret Between Us 💕</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- MAIN APP -->
+    <!-- ============================= -->
+
+    <main class="app">
+
+        <!-- Background decorations -->
+        <div class="background">
+            <div class="moon"></div>
+            <div class="star star-1">✦</div>
+            <div class="star star-2">✧</div>
+            <div class="star star-3">✦</div>
+            <div class="star star-4">✧</div>
+            <div class="cloud cloud-1">☁</div>
+            <div class="cloud cloud-2">☁</div>
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- HOME SCREEN -->
+        <!-- ============================= -->
+
+        <section id="homeScreen" class="screen active">
+
+            <div class="character">🌙</div>
+
+            <p class="small-title">A LITTLE GAME FOR TWO</p>
+
+            <h1>
+                Secret<br>
+                <span>Between Us</span>
+            </h1>
+
+            <p class="subtitle">
+                Hide a number.<br>
+                Let someone try to find it. 💕
+            </p>
+
+            <button id="createGameBtn" class="primary-btn">
+                Create a Secret ✨
+            </button>
+
+            <button id="joinGameBtn" class="secondary-btn">
+                I Have a Challenge 🔗
+            </button>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- CREATE GAME SCREEN -->
+        <!-- ============================= -->
+
+        <section id="createScreen" class="screen">
+
+            <button class="back-btn" data-back="homeScreen">
+                ← Back
+            </button>
+
+            <div class="character">🤫</div>
+
+            <p class="small-title">STEP 1</p>
+
+            <h2>Create Your Secret</h2>
+
+            <p class="screen-description">
+                Choose a 3-digit number.<br>
+                Don't tell anyone. 🤭
+            </p>
+
+            <div class="number-input-wrapper">
+
+                <input
+                    type="password"
+                    id="secretNumber"
+                    class="secret-input"
+                    maxlength="3"
+                    inputmode="numeric"
+                    placeholder="•••"
+                    autocomplete="off"
+                >
+
+                <button id="toggleSecretBtn" class="eye-btn" type="button">
+                    👁️
+                </button>
+
+            </div>
+
+            <p id="numberError" class="error-message"></p>
+
+
+            <!-- CHANCES -->
+
+            <div class="lives-section">
+
+                <p class="label">
+                    How many chances should they get?
+                </p>
+
+                <div class="lives-options">
+
+                    <button class="life-option" data-lives="5">
+                        <span>5</span>
+                        <small>Hard 😈</small>
+                    </button>
+
+                    <button class="life-option selected" data-lives="10">
+                        <span>10</span>
+                        <small>Normal 💕</small>
+                    </button>
+
+                    <button class="life-option" data-lives="15">
+                        <span>15</span>
+                        <small>Easy 🌸</small>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button id="lockSecretBtn" class="primary-btn">
+                Lock My Secret 🔐
+            </button>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- SECRET LOCKED SCREEN -->
+        <!-- ============================= -->
+
+        <section id="lockedScreen" class="screen">
+
+            <div class="character celebration">
+                🔐
+            </div>
+
+            <p class="small-title">YOUR SECRET IS LOCKED</p>
+
+            <h2>
+                Shhh... 🤫
+            </h2>
+
+            <p class="screen-description">
+                Your number is safely hidden.<br>
+                Now challenge someone to find it!
+            </p>
+
+
+            <!-- Hidden number display -->
+
+            <div class="locked-number">
+                <span>•</span>
+                <span>•</span>
+                <span>•</span>
+            </div>
+
+
+            <!-- CHALLENGE INFO -->
+
+            <div class="challenge-info">
+
+                <div class="info-item">
+                    <span>🎯</span>
+                    <strong id="challengeLives">10</strong>
+                    <small>Chances</small>
+                </div>
+
+                <div class="info-item">
+                    <span>🔢</span>
+                    <strong>3</strong>
+                    <small>Digits</small>
+                </div>
+
+            </div>
+
+
+            <!-- SHARE -->
+
+            <div class="share-box">
+
+                <p>
+                    Send this challenge to them 💌
+                </p>
+
+                <div class="link-box">
+
+                    <input
+                        type="text"
+                        id="challengeLink"
+                        readonly
+                    >
+
+                    <button id="copyLinkBtn" type="button">
+                        📋
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button id="shareBtn" class="primary-btn">
+                Share Challenge 💌
+            </button>
+
+            <button id="newChallengeBtn" class="secondary-btn">
+                Create Another
+            </button>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- JOIN / GUESS SCREEN -->
+        <!-- ============================= -->
+
+        <section id="guessScreen" class="screen">
+
+            <div class="character">
+                🕵️
+            </div>
+
+            <p class="small-title">A SECRET IS WAITING</p>
+
+            <h2>
+                Can You Find It?
+            </h2>
+
+            <p class="screen-description">
+                Someone has hidden a 3-digit number.<br>
+                You have limited chances to discover it.
+            </p>
+
+
+            <!-- CHANCES -->
+
+            <div class="chances-display">
+
+                <span>❤️</span>
+
+                <strong id="remainingLives">
+                    10
+                </strong>
+
+                <span>chances left</span>
+
+            </div>
+
+
+            <!-- GUESS INPUT -->
+
+            <div class="guess-area">
+
+                <input
+                    type="number"
+                    id="guessInput"
+                    class="guess-input"
+                    maxlength="3"
+                    min="100"
+                    max="999"
+                    inputmode="numeric"
+                    placeholder="000"
+                    autocomplete="off"
+                >
+
+                <button id="guessBtn" class="primary-btn">
+                    Make My Guess 🔮
+                </button>
+
+            </div>
+
+
+            <!-- FEEDBACK -->
+
+            <div id="feedback" class="feedback hidden">
+
+                <div id="feedbackIcon" class="feedback-icon">
+                    🔥
+                </div>
+
+                <h3 id="feedbackTitle">
+                    Getting Warmer!
+                </h3>
+
+                <p id="feedbackMessage">
+                    Try a higher number.
+                </p>
+
+            </div>
+
+
+            <!-- GUESS HISTORY -->
+
+            <div class="history-section">
+
+                <h3>Your Guesses</h3>
+
+                <div id="guessHistory" class="guess-history">
+                    <!-- JavaScript will add guesses here -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- RESULT SCREEN -->
+        <!-- ============================= -->
+
+        <section id="resultScreen" class="screen">
+
+            <div id="resultCharacter" class="character">
+                🎉
+            </div>
+
+            <p id="resultSmallTitle" class="small-title">
+                YOU FOUND IT!
+            </p>
+
+            <h2 id="resultTitle">
+                Amazing! 💕
+            </h2>
+
+            <p id="resultMessage" class="screen-description">
+                You cracked the secret number!
+            </p>
+
+
+            <!-- RESULT NUMBER -->
+
+            <div class="result-number">
+
+                <span>The secret was</span>
+
+                <strong id="resultNumber">
+                    583
+                </strong>
+
+            </div>
+
+
+            <!-- RESULT STATS -->
+
+            <div class="result-stats">
+
+                <div class="stat">
+                    <strong id="usedChances">7</strong>
+                    <span>Chances Used</span>
+                </div>
+
+                <div class="stat">
+                    <strong id="totalChances">10</strong>
+                    <span>Total Chances</span>
+                </div>
+
+            </div>
+
+
+            <button id="playAgainBtn" class="primary-btn">
+                Play Again 💕
+            </button>
+
+            <button id="homeBtn" class="secondary-btn">
+                Back to Home 🌙
+            </button>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- TOAST MESSAGE -->
+        <!-- ============================= -->
+
+        <div id="toast" class="toast">
+            Link copied! 💌
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- LOADING -->
+        <!-- ============================= -->
+
+        <div id="loadingScreen" class="loading-screen hidden">
+
+            <div class="loading-heart">
+                💗
+            </div>
+
+            <p>
+                Preparing your secret...
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1187 @@
+/* =========================================
+   SECRET BETWEEN US 💕
+   Main Stylesheet
+   ========================================= */
+
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #17152f;
+}
+
+
+/* =========================================
+   APP
+   ========================================= */
+
+.app {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 30px 20px;
+    color: #ffffff;
+}
+
+
+/* =========================================
+   DREAMY BACKGROUND
+   ========================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(126, 104, 190, 0.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #11102b 0%,
+            #1c1940 50%,
+            #2a1d48 100%
+        );
+}
+
+
+/* Moon */
+
+.moon {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 8%;
+    right: 12%;
+    border-radius: 50%;
+    background: #fff6d8;
+    box-shadow:
+        0 0 25px rgba(255, 246, 216, 0.5),
+        0 0 70px rgba(255, 246, 216, 0.25);
+}
+
+.moon::after {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: -10px;
+    left: -18px;
+    border-radius: 50%;
+    background: #11102b;
+}
+
+
+/* Stars */
+
+.star {
+    position: absolute;
+    color: #fff4c2;
+    font-size: 20px;
+    animation: twinkle 2.5s infinite ease-in-out;
+}
+
+.star-1 {
+    top: 16%;
+    left: 14%;
+}
+
+.star-2 {
+    top: 32%;
+    left: 8%;
+    animation-delay: 0.8s;
+}
+
+.star-3 {
+    top: 20%;
+    right: 35%;
+    animation-delay: 1.2s;
+}
+
+.star-4 {
+    top: 42%;
+    right: 15%;
+    animation-delay: 1.7s;
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+
+/* Clouds */
+
+.cloud {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.06);
+    font-size: 80px;
+}
+
+.cloud-1 {
+    left: -20px;
+    bottom: 15%;
+}
+
+.cloud-2 {
+    right: -30px;
+    bottom: 7%;
+    font-size: 110px;
+}
+
+
+/* =========================================
+   SCREEN
+   ========================================= */
+
+.screen {
+    position: relative;
+    z-index: 2;
+
+    width: min(500px, 100%);
+    min-height: 650px;
+
+    padding: 45px 35px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 32px;
+
+    background: rgba(30, 27, 63, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    animation: screenAppear 0.45s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes screenAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================
+   CHARACTER
+   ========================================= */
+
+.character {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+
+    font-size: 45px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(191, 157, 255, 0.12);
+
+    animation: floatCharacter 3s ease-in-out infinite;
+}
+
+@keyframes floatCharacter {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.character.celebration {
+    animation:
+        floatCharacter 3s ease-in-out infinite,
+        glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 180, 230, 0.15);
+    }
+
+    to {
+        box-shadow: 0 0 40px rgba(255, 180, 230, 0.4);
+    }
+}
+
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+
+.small-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #c7b9ee;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: clamp(45px, 9vw, 68px);
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-bottom: 22px;
+}
+
+h1 span {
+    background: linear-gradient(
+        90deg,
+        #ffb7d9,
+        #c7b4ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h2 {
+    font-size: 34px;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 17px;
+}
+
+.subtitle {
+    color: #bcb8d3;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.screen-description {
+    color: #bcb8d3;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.label {
+    color: #d7d1eb;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.primary-btn {
+    width: 100%;
+    min-height: 54px;
+
+    padding: 14px 20px;
+
+    border-radius: 16px;
+
+    color: #24192d;
+    font-size: 15px;
+    font-weight: 700;
+
+    background: linear-gradient(
+        135deg,
+        #ffb7d9,
+        #d4c1ff
+    );
+
+    box-shadow:
+        0 10px 30px rgba(214, 167, 224, 0.2);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(214, 167, 224, 0.3);
+}
+
+.secondary-btn {
+    width: 100%;
+    min-height: 52px;
+
+    margin-top: 12px;
+
+    padding: 14px 20px;
+
+    border-radius: 16px;
+
+    color: #ddd8f1;
+    font-size: 14px;
+    font-weight: 600;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.back-btn {
+    align-self: flex-start;
+
+    margin-bottom: 20px;
+
+    color: #aaa5c7;
+
+    background: transparent;
+
+    font-size: 13px;
+}
+
+.back-btn:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================
+   SECRET NUMBER INPUT
+   ========================================= */
+
+.number-input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.secret-input {
+    width: 100%;
+    height: 75px;
+
+    border-radius: 20px;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 12px;
+
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    padding-left: 12px;
+
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.secret-input:focus {
+    border-color: rgba(255, 183, 217, 0.6);
+
+    box-shadow:
+        0 0 0 4px rgba(255, 183, 217, 0.08);
+}
+
+.eye-btn {
+    position: absolute;
+
+    right: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+
+    font-size: 18px;
+
+    opacity: 0.7;
+}
+
+.eye-btn:hover {
+    opacity: 1;
+}
+
+.error-message {
+    min-height: 18px;
+
+    color: #ff9cae;
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   LIVES OPTIONS
+   ========================================= */
+
+.lives-section {
+    width: 100%;
+    margin: 12px 0 28px;
+}
+
+.lives-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.life-option {
+    padding: 14px 8px;
+
+    border-radius: 15px;
+
+    color: #d6d1e7;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.life-option span {
+    display: block;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: #ffffff;
+
+    margin-bottom: 4px;
+}
+
+.life-option small {
+    font-size: 10px;
+    color: #aaa5c7;
+}
+
+.life-option:hover {
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.life-option.selected {
+    border-color: #ffb7d9;
+
+    background: rgba(255, 183, 217, 0.1);
+
+    box-shadow:
+        0 0 20px rgba(255, 183, 217, 0.08);
+}
+
+
+/* =========================================
+   LOCKED SECRET
+   ========================================= */
+
+.locked-number {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+
+    margin: 5px 0 30px;
+}
+
+.locked-number span {
+    width: 55px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    font-size: 30px;
+
+    color: #f8d9e9;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================================
+   CHALLENGE INFO
+   ========================================= */
+
+.challenge-info {
+    display: flex;
+    gap: 12px;
+
+    width: 100%;
+
+    margin-bottom: 25px;
+}
+
+.info-item {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 14px;
+
+    border-radius: 17px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-item span {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.info-item strong {
+    font-size: 18px;
+}
+
+.info-item small {
+    color: #aaa5c7;
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   SHARE BOX
+   ========================================= */
+
+.share-box {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.share-box > p {
+    color: #c8c2dc;
+    font-size: 12px;
+    margin-bottom: 9px;
+}
+
+.link-box {
+    display: flex;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.link-box input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #aaa5c7;
+
+    padding: 12px;
+
+    font-size: 11px;
+}
+
+.link-box button {
+    width: 48px;
+
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================
+   GUESS SCREEN
+   ========================================= */
+
+.chances-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 10px 18px;
+
+    margin-bottom: 22px;
+
+    border-radius: 30px;
+
+    color: #c9c3dc;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    font-size: 12px;
+}
+
+.chances-display strong {
+    color: #ffb7d9;
+    font-size: 20px;
+}
+
+.guess-area {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.guess-input {
+    width: 100%;
+    height: 80px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+
+    outline: none;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    font-size: 34px;
+    font-weight: 800;
+
+    letter-spacing: 8px;
+}
+
+.guess-input:focus {
+    border-color: rgba(212, 193, 255, 0.6);
+
+    box-shadow:
+        0 0 0 4px rgba(212, 193, 255, 0.08);
+}
+
+
+/* Remove number input arrows */
+
+.guess-input::-webkit-inner-spin-button,
+.guess-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.guess-input {
+    appearance: textfield;
+}
+
+
+/* =========================================
+   FEEDBACK
+   ========================================= */
+
+.feedback {
+    width: 100%;
+
+    padding: 18px;
+
+    margin-bottom: 20px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    animation: feedbackAppear 0.3s ease;
+}
+
+.feedback.hidden {
+    display: none;
+}
+
+@keyframes feedbackAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.feedback-icon {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.feedback h3 {
+    margin-bottom: 5px;
+}
+
+.feedback p {
+    color: #aaa5c7;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   GUESS HISTORY
+   ========================================= */
+
+.history-section {
+    width: 100%;
+
+    text-align: left;
+
+    margin-top: 5px;
+}
+
+.history-section h3 {
+    color: #c9c3dc;
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.guess-history {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    max-height: 145px;
+
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 13px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    font-size: 12px;
+}
+
+.history-number {
+    font-weight: 700;
+}
+
+.history-result {
+    color: #aaa5c7;
+}
+
+
+/* =========================================
+   RESULT SCREEN
+   ========================================= */
+
+.result-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    margin: 10px 0 25px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 183, 217, 0.09),
+            rgba(212, 193, 255, 0.09)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-number span {
+    color: #aaa5c7;
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+.result-number strong {
+    font-size: 45px;
+    letter-spacing: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #ffb7d9,
+        #d4c1ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* =========================================
+   RESULT STATS
+   ========================================= */
+
+.result-stats {
+    width: 100%;
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.stat {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 15px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.stat strong {
+    font-size: 21px;
+    color: #ffffff;
+}
+
+.stat span {
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: #aaa5c7;
+}
+
+
+/* =========================================
+   TOAST
+   ========================================= */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 30px;
+
+    z-index: 100;
+
+    transform: translate(-50%, 100px);
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    background: #ffffff;
+    color: #251b32;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    opacity: 0;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+
+/* =========================================
+   LOADING SCREEN
+   ========================================= */
+
+.loading-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(17, 16, 43, 0.96);
+
+    backdrop-filter: blur(12px);
+}
+
+.loading-screen.hidden {
+    display: none;
+}
+
+.loading-heart {
+    font-size: 50px;
+
+    animation: heartbeat 1s infinite;
+}
+
+.loading-screen p {
+    margin-top: 15px;
+
+    color: #c8c2dc;
+
+    font-size: 13px;
+}
+
+@keyframes heartbeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .app {
+        padding: 15px;
+        align-items: center;
+    }
+
+    .screen {
+        min-height: auto;
+
+        padding: 35px 22px;
+
+        border-radius: 27px;
+    }
+
+    .moon {
+        width: 75px;
+        height: 75px;
+
+        top: 5%;
+        right: 7%;
+    }
+
+    .moon::after {
+        width: 75px;
+        height: 75px;
+    }
+
+    .character {
+        width: 75px;
+        height: 75px;
+
+        font-size: 38px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 29px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .secret-input {
+        height: 68px;
+        font-size: 28px;
+    }
+
+    .guess-input {
+        height: 70px;
+        font-size: 30px;
+    }
+
+    .locked-number span {
+        width: 50px;
+        height: 58px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        min-height: 55px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .screen {
+        padding: 28px 17px;
+        border-radius: 23px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .lives-options {
+        gap: 6px;
+    }
+
+    .life-option {
+        padding: 12px 5px;
+    }
+
+    .life-option span {
+        font-size: 18px;
+    }
+
+    .locked-number {
+        gap: 8px;
+    }
+
+    .locked-number span {
+        width: 46px;
+        height: 55px;
+    }
+}
